@@ -1,0 +1,19 @@
+defmodule Circle do
+  @moduledoc """
+  Implements basic circle functions
+  """
+  @pi 3.14159
+
+  @doc """
+  Computes the area of circle
+  """
+  @spec area(number) :: number
+  def area(r) do
+    r * r * @pi
+  end
+
+  @spec circumference(number) :: number
+  def circumference(r) do
+    2 * r * @pi
+  end
+end
