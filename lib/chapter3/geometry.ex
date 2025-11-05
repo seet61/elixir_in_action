@@ -12,4 +12,8 @@ defmodule Chapter3.Geometry do
   def area({:circle, r}) do
     r * r * @pi
   end
+
+  def area(unknown) do
+    {:error, {:unknown_shape, unknown}}
+  end
 end
