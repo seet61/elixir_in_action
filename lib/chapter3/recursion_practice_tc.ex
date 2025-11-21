@@ -13,32 +13,24 @@ defmodule Chapter3.RecursionPracticeTc do
   end
 
   # range
-  def range(start, stop) when start <= stop do
-    do_range(start, stop)
-  end
-
-  defp do_range(start, stop) when start == stop do
-    [stop]
-  end
-
-  defp do_range(start, stop) when start < stop do
-    [start | do_range(start + 1, stop)]
-  end
-
-  # positive
-  def positive(list) do
-    do_positive(list)
-  end
-
-  defp do_positive([]) do
+  def range(start, stop) when start == stop do
     []
   end
 
-  defp do_positive([head | tail]) when head < 1 do
+  def range(start, stop) when start < stop do
+    [start | range(start + 1, stop)]
+  end
+
+  # positive
+  def positive([]) do
+    []
+  end
+
+  def positive([head | tail]) when head < 1 do
     positive(tail)
   end
 
-  defp do_positive([head | tail]) when head > 0 do
+  def positive([head | tail]) when head > 0 do
     [head | positive(tail)]
   end
 end

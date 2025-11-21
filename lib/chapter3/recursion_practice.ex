@@ -13,7 +13,7 @@ defmodule Chapter3.RecursionPractice do
         [start | range(start + 1, stop)]
 
       start == stop ->
-        [start]
+        []
     end
   end
 

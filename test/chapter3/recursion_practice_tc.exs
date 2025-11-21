@@ -20,17 +20,21 @@ defmodule Chapter3.RecursionPracticeTcTest do
 
   # range
   test "range#1" do
-    assert Chapter3.RecursionPracticeTc.range(0, 0) == [0]
+    assert Chapter3.RecursionPracticeTc.range(0, 0) == []
   end
 
   test "range#2" do
-    assert Chapter3.RecursionPracticeTc.range(0, 1) == [0, 1]
+    assert Chapter3.RecursionPracticeTc.range(0, 1) == [0]
   end
 
   test "range#3" do
     assert_raise FunctionClauseError, fn ->
       Chapter3.RecursionPracticeTc.range(1, -1)
     end
+  end
+
+  test "range#4" do
+    assert Chapter3.RecursionPracticeTc.range(0, 5) == [0, 1, 2, 3, 4]
   end
 
   # positive
