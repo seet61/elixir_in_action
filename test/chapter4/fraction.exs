@@ -13,4 +13,15 @@ defmodule Chapter4.FractionTest do
     assert Chapter4.Fraction.add(Fraction.new(1, 2), Fraction.new(1, 4))
            |> Fraction.value() == 0.75
   end
+
+  test "inspect data" do
+    Fraction.new(1, 4)
+    |> IO.inspect()
+    |> Fraction.add(Fraction.new(1, 4))
+    |> IO.inspect()
+    |> Fraction.add(Fraction.new(1, 2))
+    |> IO.inspect()
+    |> Fraction.value()
+    |> IO.inspect()
+  end
 end
