@@ -10,8 +10,7 @@ defmodule Chapter4.TodoList.Csvimport do
        |> Enum.map(&String.to_integer(&1)), job}
     end)
     |> Stream.map(fn {[year, month, day], job} ->
-      {:ok, date} = Date.new(year, month, day)
-      %{date: date, title: job}
+      %{date: Date.new!(year, month, day), title: job}
     end)
     |> TodoList.new()
   end
