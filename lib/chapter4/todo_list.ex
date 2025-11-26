@@ -2,7 +2,17 @@ defmodule Chapter4.TodoList do
   alias Chapter4.TodoList
   defstruct auto_id: 1, entries: %{}
 
-  def new(), do: %TodoList{}
+  def new(entries \\ []) do
+    Enum.reduce(
+      entries,
+      # исходное значение аккумулятора
+      %TodoList{},
+      # итеративное наполнение
+      fn entry, todo_list_acc ->
+        add_entry(todo_list_acc, entry)
+      end
+    )
+  end
 
   def add_entry(todo_list, entry) do
     # установка значения новой записи
