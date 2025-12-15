@@ -42,4 +42,21 @@ defmodule Chapter8.ExceptionTest do
 
     Process.sleep(1100)
   end
+
+  test "subprocess with flag" do
+    spawn(fn ->
+      Process.flag(:trap_exit, true)
+
+      spawn_link(fn ->
+        raise("Something went wrong")
+      end)
+
+      receive do
+        msg ->
+          IO.inspect(msg)
+      end
+    end)
+
+    Process.sleep(1100)
+  end
 end
