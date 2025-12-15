@@ -1,4 +1,4 @@
-defmodule Todo.List do
+defmodule Chapter7.Todo.List do
   defstruct next_id: 1, entries: %{}
 
   def new(entries \\ []) do

@@ -1,4 +1,4 @@
-defmodule Todo.Cache do
+defmodule Chapter7.Todo.Cache do
   use GenServer
 
   def start do

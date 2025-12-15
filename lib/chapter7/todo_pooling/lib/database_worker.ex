@@ -1,4 +1,4 @@
-defmodule Todo.DatabaseWorker do
+defmodule Chapter7.Todo.DatabaseWorker do
   use GenServer
 
   def start(db_folder) do

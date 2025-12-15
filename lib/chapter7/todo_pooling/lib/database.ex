@@ -1,4 +1,4 @@
-defmodule Todo.Database do
+defmodule Chapter7.Todo.Database do
   use GenServer
 
   @db_folder "./persist"
