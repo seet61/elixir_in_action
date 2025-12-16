@@ -7,13 +7,12 @@ defmodule Chapter8.Todo.DatabaseWorker do
   end
 
   def store(worker_pid, key, data) do
-    IO.inspect("store")
-    IO.inspect(worker_pid)
+    IO.puts("database worker store: #{inspect(worker_pid)}")
     GenServer.cast(worker_pid, {:store, key, data})
   end
 
   def get(worker_pid, key) do
-    IO.inspect(self())
+    IO.puts("database worker get: #{inspect(worker_pid)}")
     GenServer.call(worker_pid, {:get, key})
   end
 
@@ -25,8 +24,7 @@ defmodule Chapter8.Todo.DatabaseWorker do
 
   @impl GenServer
   def handle_cast({:store, key, data}, db_folder) do
-    IO.inspect(":store #{key}")
-    IO.inspect(self())
+    IO.puts("database worker handle_cast :store #{key}: #{inspect(self())}")
 
     db_folder
     |> file_name(key)

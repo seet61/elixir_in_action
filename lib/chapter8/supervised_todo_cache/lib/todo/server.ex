@@ -21,13 +21,13 @@ defmodule Chapter8.Todo.Server do
 
   @impl GenServer
   def init(name) do
-    IO.inspect("Server init #{name}")
+    IO.puts("Server init #{name}")
     {:ok, {name, nil}, {:continue, :init}}
   end
 
   @impl GenServer
   def handle_continue(:init, {name, nil}) do
-    IO.inspect("Server handle_continue #{name}")
+    IO.puts("Server handle_continue #{name}")
     todo_list = Todo.Database.get(name) || Todo.List.new()
     {:noreply, {name, todo_list}}
   end

@@ -22,7 +22,7 @@ defmodule Chapter8.Todo.Database do
   end
 
   defp choose_worker(key) do
-    IO.inspect("#{key} choose_worker")
+    IO.puts("#{key} choose_worker")
     GenServer.call(__MODULE__, {:choose_worker, key})
   end
 
@@ -41,11 +41,9 @@ defmodule Chapter8.Todo.Database do
 
   @impl GenServer
   def handle_call({:choose_worker, key}, _, workers) do
-    IO.inspect("choose_worker")
-    IO.inspect(workers)
+    IO.puts("choose_worker #{inspect(workers)}")
     worker_key = :erlang.phash2(key, 3)
-    IO.inspect(worker_key)
-    IO.inspect(Map.get(workers, worker_key))
+    IO.puts("choose_worker #{worker_key}: #{inspect(Map.get(workers, worker_key))}")
     {:reply, Map.get(workers, worker_key), workers}
   end
 end
