@@ -2,9 +2,9 @@ defmodule Chapter8.Todo.Server do
   use GenServer
   alias Chapter8.Todo
 
-  def start(name) do
+  def start_link(name) do
     IO.puts("Server start #{name}")
-    GenServer.start(Todo.Server, name)
+    GenServer.start_link(Todo.Server, name)
   end
 
   def add_entry(todo_server, new_entry) do

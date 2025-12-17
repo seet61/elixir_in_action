@@ -1,5 +1,6 @@
 defmodule Chapter7.Todo.List do
   defstruct next_id: 1, entries: %{}
+  alias Chapter7.Todo
 
   def new(entries \\ []) do
     Enum.reduce(
