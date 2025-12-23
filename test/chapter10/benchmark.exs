@@ -8,21 +8,24 @@
 #
 {:ok, pid} = Chapter6.KeyValueGenServer.start()
 
-Benchee.run(%{
-  "key_value_gen.put" => fn ->
-    Enum.each(
-      1..10_000,
-      fn item ->
-        Chapter6.KeyValueGenServer.put(pid, item, item)
-      end
-    )
-  end,
-  "key_value_gen.get" => fn ->
-    Enum.each(
-      1..10_000,
-      fn item ->
-        Chapter6.KeyValueGenServer.get(pid, item)
-      end
-    )
-  end
-})
+Benchee.run(
+  %{
+    "key_value_gen.put" => fn ->
+      Enum.each(
+        1..10_000,
+        fn item ->
+          Chapter6.KeyValueGenServer.put(pid, item, item)
+        end
+      )
+    end,
+    "key_value_gen.get" => fn ->
+      Enum.each(
+        1..10_000,
+        fn item ->
+          Chapter6.KeyValueGenServer.get(pid, item)
+        end
+      )
+    end
+  },
+  parallel: 100
+)
